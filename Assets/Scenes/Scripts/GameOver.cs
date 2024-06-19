@@ -6,6 +6,10 @@ public class GameOver : MonoBehaviour
 {
     public Text roundsText;
 
+    public SceneFader sceneFader;
+
+    public string menuSceneName = "TowerDefenseMenu";
+    
     private void OnEnable()
     {
         roundsText.text = PlayerStats.Rounds.ToString();
@@ -13,13 +17,12 @@ public class GameOver : MonoBehaviour
 
     public void Retry()
     {
-        //SceneManager.LoadScene(0);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        sceneFader.FadeTo(SceneManager.GetActiveScene().name);
     }
 
     public void Menu()
     {
-        Debug.Log("Go to menu");
+        sceneFader.FadeTo(menuSceneName);
     }
     
     
